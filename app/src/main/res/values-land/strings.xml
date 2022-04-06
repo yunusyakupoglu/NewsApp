@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="item">Item</string>
+    <string name="HintUsername">Username</string>
+    <string name="HintPassword">Password</string>
+    <string name="ButtonLogin">Login</string>
+    <string name="ForgotPassword">Would you like to reset your password?</string>
 </resources>

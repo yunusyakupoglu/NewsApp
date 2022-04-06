@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="fab_margin">200dp</dimen>
     <dimen name="loginLogoWidth">200dp</dimen>
     <dimen name="loginLogoHeight">200dp</dimen>
     <dimen name="LoginButtonHeight">60dp</dimen>

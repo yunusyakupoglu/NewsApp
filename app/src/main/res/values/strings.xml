@@ -16,4 +16,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="HintUsername">Username</string>
+    <string name="HintPassword">Password</string>
+    <string name="ButtonLogin">Login</string>
+    <string name="ForgotPassword">Would you like to reset your password?</string>
 </resources>
