@@ -35,6 +35,7 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUsername">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -42,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/HintPassword"
+            android:inputType="textPassword"
             android:textColorHint="#616161"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -54,6 +56,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:text="@string/ButtonLogin"
+        android:onClick="login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
