@@ -27,4 +27,12 @@
     <string name="login_status_preference">com.news.newsapp_login_status_preference</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="HintTitle">Title</string>
+    <string name="HintContent">Content</string>
+    <string name="btnSave">Save</string>
+    <string name="rbActive">Active</string>
+    <string name="rbPassive">Passive</string>
+    <string name="news_add">News Add</string>
+    <string name="itemNewsList">Tüm Haberler</string>
+    <string name="itemLogout">Çıkış Yap</string>
 </resources>

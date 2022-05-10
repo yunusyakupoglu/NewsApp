@@ -5,4 +5,12 @@
     <string name="HintPassword">Password</string>
     <string name="ButtonLogin">Login</string>
     <string name="ForgotPassword">Would you like to reset your password?</string>
+    <string name="HintTitle">Title</string>
+    <string name="HintContent">Content</string>
+    <string name="btnSave">Save</string>
+    <string name="rbActive">Active</string>
+    <string name="rbPassive">Passive</string>
+    <string name="news_add">News Add</string>
+    <string name="itemNewsList">Tüm Haberler</string>
+    <string name="itemLogout">Çıkış Yap</string>
 </resources>
