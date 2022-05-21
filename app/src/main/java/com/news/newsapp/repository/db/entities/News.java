@@ -4,8 +4,10 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import com.news.newsapp.enums.StatusEnum;
 
+import java.io.Serializable;
+
 @Entity
-public class News {
+public class News implements Serializable {
     @PrimaryKey(autoGenerate = true)
     public long id;
 

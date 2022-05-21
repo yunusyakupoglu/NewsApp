@@ -35,4 +35,28 @@
     <string name="news_add">News Add</string>
     <string name="itemNewsList">Tüm Haberler</string>
     <string name="itemLogout">Çıkış Yap</string>
+    <string name="update">UPDATE</string>
+    <string name="delete">DELETE</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_activity_admin">AdminActivity</string>
+    <string name="nav_news_list">Haberler</string>
+    <string name="menu_news_list">Haberler</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="btnUser">KULLANICILAR</string>
+    <string name="btnNews">HABERLER</string>
+    <string name="btnFiles">DOSYALAR</string>
+    <string name="btnSettings">AYARLAR</string>
+    <string name="btnLogout">ÇIKIŞ YAP</string>
+    <string name="action_search">ARA</string>
+    <string name="fabAdd">Add</string>
+    <string name="btnUpdate">Update</string>
+    <string name="title_activity_file_add">FileAddActivity</string>
 </resources>

@@ -24,6 +24,12 @@ public interface NewsDao {
     @Query("SELECT * FROM News")
     public List<News> getAllNews();
 
+    @Query("SELECT * FROM News WHERE StatusType==1")
+    public List<News> getActiveNews();
+
+    @Query("SELECT * FROM News WHERE StatusType==2")
+    public List<News> getPassiveNews();
+
     @Query("SELECT * FROM News WHERE id=:id")
     public News getNewsById(long id);
 }

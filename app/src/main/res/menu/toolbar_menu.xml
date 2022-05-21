@@ -7,14 +7,8 @@
         app:showAsAction="always"
         android:title="TODO" />
     <item
-        android:id="@+id/action_news_list"
-        android:title="@string/itemNewsList" />
-    <item
-        android:id="@+id/action_logout"
-        android:title="@string/itemLogout" />
-    <item
-        android:id="@+id/action_news_add"
-        android:icon="@drawable/ic_baseline_post_add_24"
-        android:title="@string/news_add"
+        android:id="@+id/action_login"
+        android:icon="@drawable/ic_baseline_login_24"
+        android:title="Item"
         app:showAsAction="always" />
 </menu>

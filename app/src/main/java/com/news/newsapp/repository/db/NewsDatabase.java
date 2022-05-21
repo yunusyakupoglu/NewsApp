@@ -16,9 +16,6 @@ import com.news.newsapp.repository.db.dao.NewsDao;
 import com.news.newsapp.repository.db.entities.Files;
 import com.news.newsapp.repository.db.entities.News;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 
 @Database(entities = {News.class, Files.class}, version = 1, exportSchema = false)
 @TypeConverters(DateConverter.class)
@@ -37,7 +34,7 @@ public abstract class NewsDatabase extends RoomDatabase {
     };
 
 
-    public static NewsDatabase getDatabase(Context context){
+    public static synchronized NewsDatabase getDatabase(Context context){
         if (newsDatabase == null){
             newsDatabase =
                     Room.databaseBuilder(context.getApplicationContext(),

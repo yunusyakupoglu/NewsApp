@@ -5,10 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.news.newsapp.R;
@@ -39,7 +37,6 @@ public class newsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
             textViewStatus = itemView.findViewById(R.id.textViewStatus);
-            //rowCardView = itemView.findViewById(R.id.rowCardView);
         }
     }
 
@@ -58,13 +55,6 @@ public class newsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         vh.textViewTitle.setText(newsList.get(position).getTitle());
         vh.textViewStatus.setText(newsList.get(position).getStatusType());
         vh.data = news;
-
-      /*  vh.rowCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Tıklandı : " + news.Title, Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
 
     @Override

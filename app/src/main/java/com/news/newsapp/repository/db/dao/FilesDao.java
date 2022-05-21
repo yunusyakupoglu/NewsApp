@@ -26,4 +26,7 @@ public interface FilesDao {
 
     @Query("SELECT * FROM Files WHERE id=:id")
     Files loadFilesById(long id);
+
+    @Query("SELECT * FROM Files WHERE news_id=:newsId")
+    List<Files> loadFilesByNews(long newsId);
 }

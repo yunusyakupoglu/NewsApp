@@ -1,20 +1,33 @@
 package com.news.newsapp.repository.db.entities;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.news.newsapp.enums.StatusEnum;
+
 @Entity(foreignKeys = {
-        @ForeignKey(entity = News.class,parentColumns = "id",childColumns = "fk_newsId", onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE)
+        @ForeignKey(entity = News.class,
+                parentColumns = "id",
+                childColumns = "news_id",
+                onDelete = ForeignKey.CASCADE,
+                onUpdate = ForeignKey.CASCADE)
 })
 public class Files {
     @PrimaryKey(autoGenerate = true)
     public long id;
 
-    public long fk_newsId;
+    @ColumnInfo(name = "news_id")
+    public long newsId;
+
     public String fileUri;
+
     public int StatusType;
 
+    @Ignore
+    private News news;
 
     public long getId() {
         return id;
@@ -24,12 +37,12 @@ public class Files {
         this.id = id;
     }
 
-    public long getFk_newsId() {
-        return fk_newsId;
+    public long getNewsId() {
+        return newsId;
     }
 
-    public void setFk_newsId(long fk_newsId) {
-        this.fk_newsId = fk_newsId;
+    public void setNewsId(long newsId) {
+        this.newsId = newsId;
     }
 
     public String getFileUri() {
@@ -40,11 +53,26 @@ public class Files {
         this.fileUri = fileUri;
     }
 
-    public int getStatusType() {
-        return StatusType;
+    public String getStatusType() {
+        if(this.StatusType == StatusEnum.ACTIVE.getValue())
+        {
+            return "ACTIVE";
+        }
+        else
+        {
+            return "PASSIVE";
+        }
     }
 
     public void setStatusType(int statusType) {
         StatusType = statusType;
+    }
+
+    public News getNews() {
+        return news;
+    }
+
+    public void setNews(News news) {
+        this.news = news;
     }
 }

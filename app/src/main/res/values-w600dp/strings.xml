@@ -13,4 +13,16 @@
     <string name="news_add">News Add</string>
     <string name="itemNewsList">Tüm Haberler</string>
     <string name="itemLogout">Çıkış Yap</string>
+    <string name="update">UPDATE</string>
+    <string name="delete">DELETE</string>
+    <string name="nav_news_list">Haberler</string>
+    <string name="menu_news_list">Haberler</string>
+    <string name="btnUser">KULLANICILAR</string>
+    <string name="btnNews">HABERLER</string>
+    <string name="btnFiles">DOSYALAR</string>
+    <string name="btnSettings">AYARLAR</string>
+    <string name="btnLogout">ÇIKIŞ YAP</string>
+    <string name="action_search">ARA</string>
+    <string name="fabAdd">Add</string>
+    <string name="btnUpdate">Update</string>
 </resources>
