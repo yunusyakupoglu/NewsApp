@@ -1,5 +1,7 @@
 package com.news.newsapp.repository.db.entities;
 
+import static androidx.room.ForeignKey.CASCADE;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -12,8 +14,8 @@ import com.news.newsapp.enums.StatusEnum;
         @ForeignKey(entity = News.class,
                 parentColumns = "id",
                 childColumns = "news_id",
-                onDelete = ForeignKey.CASCADE,
-                onUpdate = ForeignKey.CASCADE)
+                onDelete = CASCADE,
+                onUpdate = CASCADE)
 })
 public class Files {
     @PrimaryKey(autoGenerate = true)

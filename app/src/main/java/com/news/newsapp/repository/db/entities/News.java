@@ -1,10 +1,13 @@
 package com.news.newsapp.repository.db.entities;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
 import com.news.newsapp.enums.StatusEnum;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class News implements Serializable {
@@ -14,8 +17,18 @@ public class News implements Serializable {
     public String Title;
     public String Content;
     public int StatusType;
+    @Ignore
+
+    public static transient List<Files> filesList;
+
+    public List<Files> getFilesList() {
+        return filesList;
+    }
 
 
+    public void setFilesList(List<Files> filesList) {
+        this.filesList = filesList;
+    }
 
     public long getId() {
         return id;
@@ -24,6 +37,7 @@ public class News implements Serializable {
     public void setId(long id) {
         this.id = id;
     }
+
 
     public String getTitle() {
         return Title;

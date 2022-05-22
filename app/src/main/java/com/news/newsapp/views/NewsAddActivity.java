@@ -1,8 +1,5 @@
 package com.news.newsapp.views;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.news.newsapp.R;
@@ -65,6 +65,9 @@ public class NewsAddActivity extends AppCompatActivity {
                 newsDao.insert(news);
 
                 Toast.makeText(NewsAddActivity.this, "Haber başarıyla kaydedildi.", Toast.LENGTH_SHORT).show();
+                NewsAddActivity.this.finish();
+
+
             }
         });
     }

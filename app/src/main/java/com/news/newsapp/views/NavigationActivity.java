@@ -49,7 +49,7 @@ public class NavigationActivity extends AppCompatActivity {
         btnFiles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toFileList = new Intent(NavigationActivity.this,FileAddActivity.class);
+                Intent toFileList = new Intent(NavigationActivity.this,FileListActivity.class);
                 startActivity(toFileList);
             }
         });

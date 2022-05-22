@@ -59,4 +59,5 @@
     <string name="fabAdd">Add</string>
     <string name="btnUpdate">Update</string>
     <string name="title_activity_file_add">FileAddActivity</string>
+    <string name="fabFileAdd">fabFileAdd</string>
 </resources>

@@ -52,6 +52,12 @@
             android:layout_height="match_parent"
             android:tag="front">
 
+            <ImageView
+                android:id="@+id/imageViewCardFile"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
             <TextView
                 android:id="@+id/textViewFileCardTitle"
                 android:layout_width="wrap_content"

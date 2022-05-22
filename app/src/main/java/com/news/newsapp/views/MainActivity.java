@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.news.newsapp.R;
 import com.news.newsapp.adapter.displayAdapter;
 import com.news.newsapp.repository.db.NewsDatabase;
+import com.news.newsapp.repository.db.dao.FilesDao;
 import com.news.newsapp.repository.db.dao.NewsDao;
 import com.news.newsapp.repository.db.entities.News;
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RecyclerView rv;
     private NewsDao newsDao;
+    private FilesDao filesDao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +46,14 @@ public class MainActivity extends AppCompatActivity {
         rv = findViewById(R.id.recyclerView_main);
         NewsDatabase newsDatabase = NewsDatabase.getDatabase(MainActivity.this);
         newsDao = newsDatabase.newsDao();
+        filesDao = newsDatabase.filesDao();
     }
 
     private void loadData(){
         List<News> newsList = newsDao.getActiveNews();
+        for(News news : newsList){
+            news.setFilesList(filesDao.loadFilesByNews(news.id));
+        }
         displayAdapter adapter = new displayAdapter(newsList,getApplicationContext());
         rv.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);

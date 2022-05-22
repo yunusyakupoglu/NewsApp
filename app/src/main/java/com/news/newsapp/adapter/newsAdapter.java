@@ -35,8 +35,8 @@ public class newsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         public CardViewDesignHolder(@NonNull View itemView) {
             super(itemView);
 
-            textViewTitle = itemView.findViewById(R.id.textViewTitle);
-            textViewStatus = itemView.findViewById(R.id.textViewStatus);
+            textViewTitle = itemView.findViewById(R.id.textViewFileCardTitle);
+            textViewStatus = itemView.findViewById(R.id.textViewFileCardStatus);
         }
     }
 

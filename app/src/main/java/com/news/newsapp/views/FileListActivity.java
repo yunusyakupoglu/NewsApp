@@ -19,28 +19,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.news.newsapp.R;
-import com.news.newsapp.adapter.newsAdapter;
+import com.news.newsapp.adapter.fileAdapter;
 import com.news.newsapp.repository.db.NewsDatabase;
+import com.news.newsapp.repository.db.dao.FilesDao;
 import com.news.newsapp.repository.db.dao.NewsDao;
-import com.news.newsapp.repository.db.entities.News;
+import com.news.newsapp.repository.db.entities.Files;
 
 import java.util.List;
 
 import co.dift.ui.SwipeToAction;
 
-public class NewsListActivity extends AppCompatActivity {
-
+public class FileListActivity extends AppCompatActivity {
     private RecyclerView rv;
     private SwipeToAction swipeToAction;
+    private FilesDao filesDao;
     private NewsDao newsDao;
     private Toolbar toolbar;
     private FloatingActionButton fabAdd;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news_list);
-        toolbar = findViewById(R.id.toolbar_news_list);
+        setContentView(R.layout.activity_file_list);
+        toolbar = findViewById(R.id.toolbar_file_list);
         initComponents();
         setToolbar();
         loadData();
@@ -49,25 +49,24 @@ public class NewsListActivity extends AppCompatActivity {
 
     private void setToolbar(){
         toolbar.setTitle("Haberler");
-        toolbar.setSubtitle("Tüm Haberler");
+        toolbar.setSubtitle("Dosyalar");
         setSupportActionBar(toolbar);
-
     }
 
     private void initComponents(){
-        rv = findViewById(R.id.recyclerView_news);
-        fabAdd = findViewById(R.id.fabAdd);
-        NewsDatabase newsDatabase = NewsDatabase.getDatabase(NewsListActivity.this);
+        rv = findViewById(R.id.recyclerView_files);
+        fabAdd = findViewById(R.id.fabFileAdd);
+        NewsDatabase newsDatabase = NewsDatabase.getDatabase(FileListActivity.this);
+        filesDao = newsDatabase.filesDao();
         newsDao = newsDatabase.newsDao();
-
     }
 
     private void registerEventHandlers(){
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toNewsAdd = new Intent(NewsListActivity.this,NewsAddActivity.class);
-                startActivity(toNewsAdd);
+                Intent toFilesAdd = new Intent(FileListActivity.this,FileAddActivity.class);
+                startActivity(toFilesAdd);
             }
         });
     }
@@ -78,60 +77,65 @@ public class NewsListActivity extends AppCompatActivity {
         Snackbar.make(rv, "Silmek için kaydırın", Snackbar.LENGTH_LONG).show();
     }
 
-    protected void loadData(){
-        List<News> newsList = newsDao.getAllNews();
-        newsAdapter adapter = new newsAdapter(newsList);
+    private void loadData(){
+        List<Files> filesList = filesDao.loadAllFiles();
+        for(Files files : filesList){
+            files.setNews(newsDao.getNewsById(files.newsId));
+        }
+
+        fileAdapter adapter = new fileAdapter(filesList);
         rv.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-
         rv.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
-       swipeToAction = new SwipeToAction(rv, new SwipeToAction.SwipeListener<News>() {
+        swipeToAction = new SwipeToAction(rv, new SwipeToAction.SwipeListener<Files>() {
 
-           @Override
-            public boolean swipeLeft(News news) {
-                deleteNews(news);
+
+            @Override
+            public boolean swipeLeft(Files files) {
+                deleteFile(files);
                 return true;
             }
 
-           @Override
-            public boolean swipeRight(News news) {
-               deleteNews(news);
+            @Override
+            public boolean swipeRight(Files files) {
+                deleteFile(files);
                 return true;
             }
 
-           @Override
-            public void onClick(News news) {
-               // Toast.makeText(NewsListActivity.this, "Tıklandı.", Toast.LENGTH_SHORT).show();
+            @Override
+            public void onClick(Files files) {
+
             }
 
-           @Override
-            public void onLongClick(News news) {
+            @Override
+            public void onLongClick(Files files) {
 
             }
         });
-
     }
 
-    private void deleteNews(final News news){
+    private void deleteFile(final Files files){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Emin misiniz?");
-        builder.setMessage(news.Title + " başlıklı haber silinecektir.");
+        builder.setMessage(files.getNews().Title + " başlıklı habere ait "+files.fileUri +" isimli dosya veritabanından silinecektir.");
         builder.setIcon(R.drawable.ic_baseline_warning_24);
 
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == DialogInterface.BUTTON_POSITIVE){
-                    newsDao.delete(news);
+                    filesDao.delete(files);
                     reloadData();
-                    Snackbar snackbar = Snackbar.make(rv, news.getTitle() + " silindi", Snackbar.LENGTH_LONG);
+                    Snackbar snackbar = Snackbar.make(rv,files.getNews().getTitle() + " başlıklı habere ait "
+                            +files.getFileUri()
+                            +" isimli dosya veritabanından silindi.",Snackbar.LENGTH_LONG);
                     snackbar.setAction("Geri Al", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            newsDao.insert(news);
+                            filesDao.insert(files);
                             reloadData();
                         }
                     });
@@ -148,16 +152,12 @@ public class NewsListActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private void updateNews(News news){
-        News currentNews = newsDao.getNewsById(news.getId());
-        Intent intent = new Intent(NewsListActivity.this,NewsUpdateActivity.class);
-        intent.putExtra("nesne", currentNews);
-        startActivity(intent);
-    }
-
     private void reloadData(){
-        List<News> newsList = newsDao.getAllNews();
-        newsAdapter adapter = new newsAdapter(newsList);
+        List<Files> filesList = filesDao.loadAllFiles();
+        for(Files files : filesList){
+            files.setNews(newsDao.getNewsById(files.newsId));
+        }
+        fileAdapter adapter = new fileAdapter(filesList);
         rv.setAdapter(adapter);
     }
 

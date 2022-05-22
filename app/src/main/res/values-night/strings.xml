@@ -25,4 +25,5 @@
     <string name="action_search">ARA</string>
     <string name="fabAdd">Add</string>
     <string name="btnUpdate">Update</string>
+    <string name="fabFileAdd">fabFileAdd</string>
 </resources>
