@@ -23,16 +23,13 @@ public abstract class NewsDatabase extends RoomDatabase {
     private static NewsDatabase newsDatabase;
     public abstract NewsDao newsDao();
     public abstract FilesDao filesDao();
-
     private static final String databaseName = "newsDatabase.db";
-
     private static final Migration MIGRATION = new Migration(1, 2) {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
             // Veri islemleri
         }
     };
-
 
     public static synchronized NewsDatabase getDatabase(Context context){
         if (newsDatabase == null){
@@ -50,7 +47,6 @@ public abstract class NewsDatabase extends RoomDatabase {
     public static void destroyInstance(){
         newsDatabase = null;
     }
-
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {

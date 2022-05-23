@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Other values-->
+    <attr name="customRelativeLayoutBgColor" format="reference" />
+    <attr name="customMainCardBgColor" format="reference"/>
+    <attr name="customTextViewTextColor" format="reference"/>
+</resources>

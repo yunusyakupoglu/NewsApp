@@ -29,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
         initComponents();
         registerEventHandlers();
     }
-
     private void initComponents(){
         textRegEmail = findViewById(R.id.textRegEmail);
         textRegPassword = findViewById(R.id.textRegPassword);
@@ -37,21 +36,17 @@ public class RegisterActivity extends AppCompatActivity {
         buttonRegister = findViewById(R.id.buttonRegister);
         mAuth = FirebaseAuth.getInstance();
     }
-
     private void registerEventHandlers(){
         buttonRegister.setOnClickListener(v -> {
             createUser();
         });
-
         tvLoginHere.setOnClickListener(v -> {
             startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
         });
     }
-
     private void createUser(){
         String email = textRegEmail.getText().toString();
         String password = textRegPassword.getText().toString();
-
         if (TextUtils.isEmpty(email)){
             textRegEmail.setError("Email cannot be empty");
             textRegEmail.requestFocus();

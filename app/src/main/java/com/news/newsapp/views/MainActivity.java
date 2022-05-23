@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setToolbar();
     }
-
     private void setToolbar(){
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Haberler");
@@ -41,14 +40,12 @@ public class MainActivity extends AppCompatActivity {
         initComponents();
         loadData();
     }
-
     private void initComponents(){
         rv = findViewById(R.id.recyclerView_main);
         NewsDatabase newsDatabase = NewsDatabase.getDatabase(MainActivity.this);
         newsDao = newsDatabase.newsDao();
         filesDao = newsDatabase.filesDao();
     }
-
     private void loadData(){
         List<News> newsList = newsDao.getActiveNews();
         for(News news : newsList){
@@ -59,18 +56,13 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
-
-
         rv.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu,menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_search){

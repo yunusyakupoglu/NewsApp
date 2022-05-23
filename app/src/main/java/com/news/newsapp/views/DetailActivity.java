@@ -17,7 +17,6 @@ public class DetailActivity extends AppCompatActivity {
     private ImageView imageViewThumbnail;
     private News news;
     private FilesDao filesDao;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +24,6 @@ public class DetailActivity extends AppCompatActivity {
         initComponents();
         loadData();
     }
-
     private void initComponents(){
         lblDetailTitle = findViewById(R.id.lblDetailTitle);
         lblDetailContent = findViewById(R.id.lblDetailContent);
@@ -33,7 +31,6 @@ public class DetailActivity extends AppCompatActivity {
         NewsDatabase newsDatabase = NewsDatabase.getDatabase(DetailActivity.this);
         filesDao = newsDatabase.filesDao();
     }
-
     private void loadData(){
         news = (News) getIntent().getSerializableExtra("nesne");
        imageViewThumbnail.setImageURI(Uri.parse(filesDao.loadFilesByNews(news.id).get(0).fileUri));

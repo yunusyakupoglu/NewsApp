@@ -22,7 +22,6 @@ public class NavigationActivity extends AppCompatActivity {
         initComponents();
         listeners();
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -31,13 +30,11 @@ public class NavigationActivity extends AppCompatActivity {
             startActivity(new Intent(NavigationActivity.this,LoginActivity.class));
         }
     }
-
     private void initComponents(){
         btnNews = findViewById(R.id.btnNews);
         btnFiles = findViewById(R.id.btnFiles);
         btnLogout = findViewById(R.id.btnLogout);
     }
-
     private void listeners(){
         btnNews.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +43,6 @@ public class NavigationActivity extends AppCompatActivity {
                 startActivity(toNewsList);
             }
         });
-
         btnFiles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,8 +50,6 @@ public class NavigationActivity extends AppCompatActivity {
                 startActivity(toFileList);
             }
         });
-
-
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

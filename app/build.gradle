@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 31 // derleme SDK versiyonu
 
     defaultConfig {
-        applicationId "com.news.newsapp"
-        minSdk 29
-        targetSdk 31
+        applicationId "com.news.newsapp" // uygulama paket adı
+        minSdk 29 // minimum SDK versiyonu
+        targetSdk 31 // hedeflenen SDK versiyonu
         versionCode 1
         versionName "1.0"
 
@@ -61,9 +61,4 @@ dependencies {
     def SQLite_version = "2.2.0"
     implementation "androidx.room:room-runtime:$SQLite_version"
     annotationProcessor "androidx.room:room-compiler:$SQLite_version"
-
-    //Firebase AUTH
-    //implementation 'com.google.firebase:firebase-auth'
-    //implementation 'com.google.android.gms:play-services-auth:20.1.0'
-
 }

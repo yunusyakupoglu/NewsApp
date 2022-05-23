@@ -47,9 +47,10 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/RelativeLayout_News"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:background="@color/white"
+            android:background="?attr/customRelativeLayoutBgColor"
             android:tag="front">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
                     android:textAllCaps="false"
-                    android:textColor="#000000"
+                    android:textColor="?attr/customTextViewTextColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

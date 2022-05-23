@@ -29,13 +29,11 @@ import java.util.List;
 import co.dift.ui.SwipeToAction;
 
 public class NewsListActivity extends AppCompatActivity {
-
     private RecyclerView rv;
     private SwipeToAction swipeToAction;
     private NewsDao newsDao;
     private Toolbar toolbar;
     private FloatingActionButton fabAdd;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,22 +44,17 @@ public class NewsListActivity extends AppCompatActivity {
         loadData();
         registerEventHandlers();
     }
-
     private void setToolbar(){
         toolbar.setTitle("Haberler");
         toolbar.setSubtitle("Tüm Haberler");
         setSupportActionBar(toolbar);
-
     }
-
     private void initComponents(){
         rv = findViewById(R.id.recyclerView_news);
         fabAdd = findViewById(R.id.fabAdd);
         NewsDatabase newsDatabase = NewsDatabase.getDatabase(NewsListActivity.this);
         newsDao = newsDatabase.newsDao();
-
     }
-
     private void registerEventHandlers(){
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,13 +64,11 @@ public class NewsListActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         Snackbar.make(rv, "Silmek için kaydırın", Snackbar.LENGTH_LONG).show();
     }
-
     protected void loadData(){
         List<News> newsList = newsDao.getAllNews();
         newsAdapter adapter = new newsAdapter(newsList);
@@ -85,42 +76,31 @@ public class NewsListActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
-
-
         rv.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
        swipeToAction = new SwipeToAction(rv, new SwipeToAction.SwipeListener<News>() {
-
            @Override
             public boolean swipeLeft(News news) {
                 deleteNews(news);
                 return true;
             }
-
            @Override
             public boolean swipeRight(News news) {
                deleteNews(news);
                 return true;
             }
-
            @Override
             public void onClick(News news) {
-               // Toast.makeText(NewsListActivity.this, "Tıklandı.", Toast.LENGTH_SHORT).show();
             }
-
            @Override
             public void onLongClick(News news) {
-
             }
         });
-
     }
-
     private void deleteNews(final News news){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Emin misiniz?");
         builder.setMessage(news.Title + " başlıklı haber silinecektir.");
         builder.setIcon(R.drawable.ic_baseline_warning_24);
-
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -143,30 +123,19 @@ public class NewsListActivity extends AppCompatActivity {
         };
         builder.setPositiveButton("Evet", listener);
         builder.setNegativeButton("Hayır",listener);
-
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-
-    private void updateNews(News news){
-        News currentNews = newsDao.getNewsById(news.getId());
-        Intent intent = new Intent(NewsListActivity.this,NewsUpdateActivity.class);
-        intent.putExtra("nesne", currentNews);
-        startActivity(intent);
-    }
-
     private void reloadData(){
         List<News> newsList = newsDao.getAllNews();
         newsAdapter adapter = new newsAdapter(newsList);
         rv.setAdapter(adapter);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.news_main_menu,menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -175,7 +144,6 @@ public class NewsListActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
     }
 }

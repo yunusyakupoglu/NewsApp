@@ -19,27 +19,20 @@ import co.dift.ui.SwipeToAction;
 public class newsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private Context context;
     private List<News> newsList;
-
     public newsAdapter(Context context) {
         this.context = context;
-    }
-
+    } //Constructor
     public newsAdapter(List<News> newsList) {
         this.newsList = newsList;
-    }
-
+    } //Constructor
     public class CardViewDesignHolder extends SwipeToAction.ViewHolder<News>{
         private final TextView textViewTitle, textViewStatus;
-        //private final CardView rowCardView;
-
         public CardViewDesignHolder(@NonNull View itemView) {
             super(itemView);
-
             textViewTitle = itemView.findViewById(R.id.textViewFileCardTitle);
             textViewStatus = itemView.findViewById(R.id.textViewFileCardStatus);
         }
     }
-
     @NonNull
     @Override
     public CardViewDesignHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -47,7 +40,6 @@ public class newsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 .inflate(R.layout.card_design,parent,false);
         return new CardViewDesignHolder(itemView);
     }
-
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         News news = newsList.get(position);
@@ -56,12 +48,10 @@ public class newsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         vh.textViewStatus.setText(newsList.get(position).getStatusType());
         vh.data = news;
     }
-
     @Override
     public int getItemCount() {
         return newsList.size();
     }
-
     @Override
     public long getItemId(int position) {
         News news = newsList.get(position);

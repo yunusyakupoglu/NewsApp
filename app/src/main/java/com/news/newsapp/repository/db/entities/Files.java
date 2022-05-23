@@ -20,41 +20,31 @@ import com.news.newsapp.enums.StatusEnum;
 public class Files {
     @PrimaryKey(autoGenerate = true)
     public long id;
-
     @ColumnInfo(name = "news_id")
     public long newsId;
-
     public String fileUri;
-
     public int StatusType;
-
     @Ignore
     private News news;
 
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
-
     public long getNewsId() {
         return newsId;
     }
-
     public void setNewsId(long newsId) {
         this.newsId = newsId;
     }
-
     public String getFileUri() {
         return fileUri;
     }
-
     public void setFileUri(String fileUri) {
         this.fileUri = fileUri;
     }
-
     public String getStatusType() {
         if(this.StatusType == StatusEnum.ACTIVE.getValue())
         {
@@ -65,15 +55,12 @@ public class Files {
             return "PASSIVE";
         }
     }
-
     public void setStatusType(int statusType) {
         StatusType = statusType;
     }
-
     public News getNews() {
         return news;
     }
-
     public void setNews(News news) {
         this.news = news;
     }

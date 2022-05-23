@@ -42,35 +42,28 @@ public class FileAddActivity extends AppCompatActivity {
     private Spinner spinnerNews;
     private RadioGroup radioGroupFileStatus;
     private Toolbar toolbar;
-
     private NewsDatabase newsDatabase;
     private NewsDao newsDao;
     private FilesDao filesDao;
-
     private static final int IMAGE_PICK_MODE = 1000;
     private static final int PERMISSION_CODE = 1001;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_add);
-
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
-
         initComponents();
         setToolbar();
         registerEventHandlers();
         loadData();
     }
-
     private void setToolbar(){
         toolbar.setTitle("Haberler");
         toolbar.setSubtitle("Dosya Ekle");
         setSupportActionBar(toolbar);
     }
-
     private void initComponents(){
         imageViewFile = findViewById(R.id.imageViewFile);
         btnSelect = findViewById(R.id.btnSelect);
@@ -79,18 +72,15 @@ public class FileAddActivity extends AppCompatActivity {
         radioGroupFileStatus = findViewById(R.id.radioGroupStatus);
         spinnerNews = (Spinner) findViewById(R.id.spinnerNews);
         toolbar = findViewById(R.id.toolbar_file_add);
-
         newsDatabase = NewsDatabase.getDatabase(FileAddActivity.this);
         newsDao = newsDatabase.newsDao();
         filesDao = newsDatabase.filesDao();
     }
-
     private void loadData(){
         List<News> newsList = newsDao.getAllNews();
         SpinnerAdapter spinnerAdapter = new spinnerAdapter(this,R.layout.custom_spinner_adapter,newsList);
         spinnerNews.setAdapter(spinnerAdapter);
     }
-
     private void  registerEventHandlers(){
         btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,14 +104,12 @@ public class FileAddActivity extends AppCompatActivity {
                 }
             }
         });
-
         btnFileSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String filePath = txtFileName.getText().toString();
                 News selectedStatus = (News) spinnerNews.getSelectedItem();
                 long newsId = selectedStatus.getId();
-
                 Files files = new Files();
                 files.setFileUri(filePath);
                 files.setNewsId(newsId);
@@ -129,22 +117,17 @@ public class FileAddActivity extends AppCompatActivity {
                 if (radioGroupFileStatus.getCheckedRadioButtonId() == R.id.rbPassive)
                     status= 2;
                 files.setStatusType(status);
-
                 filesDao.insert(files);
-
                 Toast.makeText(FileAddActivity.this, "Resim başarıyla kaydedildi.", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
-
     private void pickImageFromGallery() {
         //intent to pick image
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_PICK_MODE);
     }
-
     //handle result of runtime permission
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -162,7 +145,6 @@ public class FileAddActivity extends AppCompatActivity {
             }
         }
     }
-
     //handle result of picked image
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -180,7 +162,6 @@ public class FileAddActivity extends AppCompatActivity {
             txtFileName.setText(selectedImageUri.getPath());
         }
     }
-
     public String getPathFromURI(Uri contentUri) {
         String res = null;
         String[] proj = {MediaStore.Images.Media.DATA};

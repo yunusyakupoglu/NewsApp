@@ -46,13 +46,11 @@ public class FileListActivity extends AppCompatActivity {
         loadData();
         registerEventHandlers();
     }
-
     private void setToolbar(){
         toolbar.setTitle("Haberler");
         toolbar.setSubtitle("Dosyalar");
         setSupportActionBar(toolbar);
     }
-
     private void initComponents(){
         rv = findViewById(R.id.recyclerView_files);
         fabAdd = findViewById(R.id.fabFileAdd);
@@ -60,7 +58,6 @@ public class FileListActivity extends AppCompatActivity {
         filesDao = newsDatabase.filesDao();
         newsDao = newsDatabase.newsDao();
     }
-
     private void registerEventHandlers(){
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,59 +67,46 @@ public class FileListActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         Snackbar.make(rv, "Silmek için kaydırın", Snackbar.LENGTH_LONG).show();
     }
-
     private void loadData(){
         List<Files> filesList = filesDao.loadAllFiles();
         for(Files files : filesList){
             files.setNews(newsDao.getNewsById(files.newsId));
         }
-
         fileAdapter adapter = new fileAdapter(filesList);
         rv.setAdapter(adapter);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
-
         rv.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
         swipeToAction = new SwipeToAction(rv, new SwipeToAction.SwipeListener<Files>() {
-
-
             @Override
             public boolean swipeLeft(Files files) {
                 deleteFile(files);
                 return true;
             }
-
             @Override
             public boolean swipeRight(Files files) {
                 deleteFile(files);
                 return true;
             }
-
             @Override
             public void onClick(Files files) {
-
             }
-
             @Override
             public void onLongClick(Files files) {
-
             }
         });
     }
-
     private void deleteFile(final Files files){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Emin misiniz?");
         builder.setMessage(files.getNews().Title + " başlıklı habere ait "+files.fileUri +" isimli dosya veritabanından silinecektir.");
         builder.setIcon(R.drawable.ic_baseline_warning_24);
-
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -147,11 +131,9 @@ public class FileListActivity extends AppCompatActivity {
         };
         builder.setPositiveButton("Evet", listener);
         builder.setNegativeButton("Hayır",listener);
-
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-
     private void reloadData(){
         List<Files> filesList = filesDao.loadAllFiles();
         for(Files files : filesList){
@@ -160,13 +142,11 @@ public class FileListActivity extends AppCompatActivity {
         fileAdapter adapter = new fileAdapter(filesList);
         rv.setAdapter(adapter);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.news_main_menu,menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -175,7 +155,6 @@ public class FileListActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
     }
 }

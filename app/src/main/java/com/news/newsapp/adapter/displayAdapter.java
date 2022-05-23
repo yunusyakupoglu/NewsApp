@@ -23,26 +23,19 @@ public class displayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private List<News> newsList;
     private Context context;
     private MainActivity main;
-
-
-    public displayAdapter(List<News> newsList, Context context) {
+    public displayAdapter(List<News> newsList, Context context) { //constructor
         this.newsList = newsList;
         this.context = context;
     }
-
-
-    public class CardViewDesignHolder extends RecyclerView.ViewHolder{
+    public class CardViewDesignHolder extends RecyclerView.ViewHolder{ //RecyclerView nesnesinin ViewHolder sınıfından miras alan CardViewDesignHolder sınıfı
         private TextView lblTitle;
         private CardView rowCardViewMain;
-        public CardViewDesignHolder(@NonNull View itemView) {
+        public CardViewDesignHolder(@NonNull View itemView) { //Constructor
             super(itemView);
             lblTitle = itemView.findViewById(R.id.lblTitle);
             rowCardViewMain = itemView.findViewById(R.id.rowCardViewMain);
         }
-
     }
-
-
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,7 +43,6 @@ public class displayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 .inflate(R.layout.main_card_design,parent,false);
         return new CardViewDesignHolder(itemView);
     }
-
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final News newsItem = newsList.get(position);
@@ -66,12 +58,10 @@ public class displayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return newsList.size();
     }
-
     @Override
     public long getItemId(int position) {
         News news = newsList.get(position);

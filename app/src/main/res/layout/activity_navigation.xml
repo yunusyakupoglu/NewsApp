@@ -37,7 +37,7 @@
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:text="@string/btnNews"
-        android:textColor="@color/black" />
+        android:textColor="?attr/customTextViewTextColor" />
 
     <Button
         android:id="@+id/btnFiles"
@@ -53,7 +53,7 @@
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:text="@string/btnFiles"
-        android:textColor="@color/black" />
+        android:textColor="?attr/customTextViewTextColor" />
 
     <Button
         android:id="@+id/btnLogout"
@@ -82,7 +82,7 @@
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:text="@string/btnLogout"
-        android:textColor="@color/black"
+        android:textColor="?attr/customTextViewTextColor"
         app:iconPadding="0dp" />
 
 </LinearLayout>

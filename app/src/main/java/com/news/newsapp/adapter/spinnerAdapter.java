@@ -17,12 +17,10 @@ import java.util.List;
 
 public class spinnerAdapter extends ArrayAdapter<News> {
     LayoutInflater layoutInflater;
-
     public spinnerAdapter(@NonNull Context context, int resource, @NonNull List<News> news) {
         super(context, resource, news);
         layoutInflater = LayoutInflater.from(context);
     }
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -32,7 +30,6 @@ public class spinnerAdapter extends ArrayAdapter<News> {
         textView.setText(news.getTitle());
         return rowView;
     }
-
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null)

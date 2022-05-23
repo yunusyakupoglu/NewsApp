@@ -30,30 +30,24 @@ public class LoginActivity extends AppCompatActivity {
         initComponents();
         registerEventHandlers();
     }
-
     private void initComponents(){
         textLogEmail = findViewById(R.id.textLogEmail);
         textLogPassword = findViewById(R.id.textLogPassword);
         tvRegisterHere = findViewById(R.id.textViewregisterHere);
         buttonLogin = findViewById(R.id.buttonLogin);
-
         mAuth = FirebaseAuth.getInstance();
     }
-
     private void registerEventHandlers(){
         buttonLogin.setOnClickListener(v -> {
             loginUser();
         });
-
         tvRegisterHere.setOnClickListener(v -> {
             startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
         });
     }
-
     private void loginUser(){
         String email = textLogEmail.getText().toString();
         String password = textLogPassword.getText().toString();
-
         if (TextUtils.isEmpty(email)){
             textLogEmail.setError("Email cannot be empty");
             textLogEmail.requestFocus();
@@ -69,13 +63,11 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(LoginActivity.this,NavigationActivity.class));
                     } else {
                         Toast.makeText(LoginActivity.this, "Log in Error: "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
                     }
                 }
             });
         }
     }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -83,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
-
     private void updateUI(FirebaseUser currentUser) {
     }
 }

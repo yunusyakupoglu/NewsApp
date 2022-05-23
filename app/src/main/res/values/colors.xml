@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Default Colors-->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,4 +8,23 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- My Colors-->
+    <color name="LightTheme_primary">#009688</color>
+    <color name="LightTheme_primary_dark">#00796B</color>
+    <color name="LightTheme_primary_light">#B2DFDB</color>
+    <color name="LightTheme_accent">#00BCD4</color>
+    <color name="LightTheme_primary_text">#212121</color>
+    <color name="LightTheme_secondary_text">#757575</color>
+    <color name="LightTheme_icons">#FFFFFF</color>
+    <color name="LightTheme_divider">#BDBDBD</color>
+
+    <color name="DarkTheme_primary">#3F51B5</color>
+    <color name="DarkTheme_primary_dark">#303F9F</color>
+    <color name="DarkTheme_primary_light">#C5CAE9</color>
+    <color name="DarkTheme_accent">#448AFF</color>
+    <color name="DarkTheme_primary_text">#212121</color>
+    <color name="DarkTheme_secondary_text">#757575</color>
+    <color name="DarkTheme_icons">#FFFFFF</color>
+    <color name="DarkTheme_divider">#BDBDBD</color>
 </resources>
