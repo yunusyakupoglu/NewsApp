@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.action_search){
 
         } else if (item.getItemId() == R.id.action_login){
-            Intent toLogin = new Intent(MainActivity.this,NavigationActivity.class);
+            Intent toLogin = new Intent(MainActivity.this,LoginActivity.class);
             startActivity(toLogin);
         }
         return super.onOptionsItemSelected(item);

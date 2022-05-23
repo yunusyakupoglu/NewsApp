@@ -3,4 +3,5 @@
     <dimen name="loginLogoWidth">200dp</dimen>
     <dimen name="loginLogoHeight">200dp</dimen>
     <dimen name="LoginButtonHeight">60dp</dimen>
+    <dimen name="activity_horizontal_margin">200dp</dimen>
 </resources>

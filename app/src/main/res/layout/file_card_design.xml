@@ -47,37 +47,49 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="75dp"
+            android:background="@color/white"
             android:tag="front">
 
-            <ImageView
-                android:id="@+id/imageViewCardFile"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                tools:srcCompat="@tools:sample/avatars" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textViewFileCardTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:textColor="#F44336"
-                android:textStyle="bold|italic" />
+                <ImageView
+                    android:id="@+id/imageViewCardFile"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:id="@+id/textViewFileCardStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="24dp"
-                android:layout_alignParentRight="true"
-                android:textAllCaps="false"
-                android:textColor="#000000" />
+                <TextView
+                    android:id="@+id/textViewFileCardTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="#F44336"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewFileCardStatus"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewCardFile"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textViewFileCardStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:textAllCaps="false"
+                    android:textColor="#000000"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

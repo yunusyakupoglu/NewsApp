@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.news.newsapp.R;
@@ -24,6 +25,7 @@ public class NewsAddActivity extends AppCompatActivity {
     private TextInputEditText txtTitle, txtContent;
     private RadioGroup radioGroupStatus;
     private Button btnSave;
+    private Toolbar toolbar;
 
     private NewsDatabase newsDatabase;
     private NewsDao newsDao;
@@ -32,8 +34,16 @@ public class NewsAddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_add);
+        toolbar = findViewById(R.id.toolbar_news_add);
         initComponents();
+        setToolbar();
         registerEventHandlers();
+    }
+
+    private void setToolbar(){
+        toolbar.setTitle("Haberler");
+        toolbar.setSubtitle("Haber Ekle");
+        setSupportActionBar(toolbar);
     }
 
     private void initComponents(){

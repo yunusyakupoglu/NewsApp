@@ -24,22 +24,6 @@
         app:srcCompat="@drawable/duzce_haber" />
 
     <Button
-        android:id="@+id/btnUsers"
-        style="@android:style/Widget.Material.Light.Button.Borderless"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_weight="0.2"
-        android:padding="0dp"
-        android:paddingStart="0dp"
-        android:paddingLeft="0dp"
-        android:paddingTop="0dp"
-        android:paddingEnd="0dp"
-        android:paddingRight="0dp"
-        android:paddingBottom="0dp"
-        android:text="@string/btnUser"
-        android:textColor="@color/black" />
-
-    <Button
         android:id="@+id/btnNews"
         style="@android:style/Widget.Material.Light.Button.Borderless"
         android:layout_width="match_parent"
@@ -69,30 +53,6 @@
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:text="@string/btnFiles"
-        android:textColor="@color/black" />
-
-    <Button
-        android:id="@+id/btnSettings"
-        style="@android:style/Widget.Material.Light.Button.Borderless"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="0dp"
-        android:layout_marginHorizontal="0dp"
-        android:layout_marginVertical="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_weight="0.2"
-        android:padding="0dp"
-        android:paddingStart="0dp"
-        android:paddingLeft="0dp"
-        android:paddingTop="0dp"
-        android:paddingEnd="0dp"
-        android:paddingRight="0dp"
-        android:paddingBottom="0dp"
-        android:text="@string/btnSettings"
         android:textColor="@color/black" />
 
     <Button

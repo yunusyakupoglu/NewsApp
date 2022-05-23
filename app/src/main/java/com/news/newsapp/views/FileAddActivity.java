@@ -20,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.splashscreen.SplashScreen;
 
@@ -40,6 +41,7 @@ public class FileAddActivity extends AppCompatActivity {
     private Button btnSelect, btnFileSave;
     private Spinner spinnerNews;
     private RadioGroup radioGroupFileStatus;
+    private Toolbar toolbar;
 
     private NewsDatabase newsDatabase;
     private NewsDao newsDao;
@@ -58,8 +60,15 @@ public class FileAddActivity extends AppCompatActivity {
         Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
         initComponents();
+        setToolbar();
         registerEventHandlers();
         loadData();
+    }
+
+    private void setToolbar(){
+        toolbar.setTitle("Haberler");
+        toolbar.setSubtitle("Dosya Ekle");
+        setSupportActionBar(toolbar);
     }
 
     private void initComponents(){
@@ -69,6 +78,7 @@ public class FileAddActivity extends AppCompatActivity {
         txtFileName = findViewById(R.id.textViewFileName);
         radioGroupFileStatus = findViewById(R.id.radioGroupStatus);
         spinnerNews = (Spinner) findViewById(R.id.spinnerNews);
+        toolbar = findViewById(R.id.toolbar_file_add);
 
         newsDatabase = NewsDatabase.getDatabase(FileAddActivity.this);
         newsDao = newsDatabase.newsDao();
